@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/*
+ * Triplicate: a quiet graphite shell; carbon-copy paper colors only on documents.
+ * White copy = estimate, canary = invoice, pink = receipt.
+ */
+@theme {
+  --color-shell: #eceeef;
+  --color-panel: #ffffff;
+  --color-graphite: #2a2d31;
+  --color-soft: #5f656d;
+  --color-rule: #d5d8da;
+  --color-copy-white: #fcfcf8;
+  --color-copy-canary: #f5e58e;
+  --color-copy-pink: #f3c6d0;
+  --color-carbon: #2c3d91;
+  --color-stamp: #c7303a;
+  --color-ok: #2f7d4f;
+  --color-warn: #a86a12;
+
+  /* Chart categories, validated for color-vision separation on white. */
+  --color-cat-material: #3d55c4;
+  --color-cat-labor: #0f9a8f;
+  --color-cat-other: #c9701c;
+
+  --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
+  --font-sans: var(--font-public-sans), "Segoe UI", system-ui, sans-serif;
+  --font-type: var(--font-courier-prime), "Courier New", ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-shell);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-carbon);
+  outline-offset: 2px;
+}
+
+.font-expanded {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Perforation along the top edge of a form sheet. */
+.perforated {
+  position: relative;
+}
+.perforated::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 8px;
+  background: repeating-linear-gradient(90deg, transparent 0 6px, rgb(0 0 0 / 0.08) 6px 8px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
